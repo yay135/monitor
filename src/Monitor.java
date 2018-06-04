@@ -238,7 +238,7 @@ class SwingWorkerRealTime {
         chart.getStyler().setLegendVisible(false);
         chart.getStyler().setXAxisTicksVisible(false);
         chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
-        chart.getStyler().setYAxisMax(10.0);
+        chart.getStyler().setYAxisMax(15.0);
         chart.getStyler().setYAxisMin(0.0);
         // Show it
         sw = new SwingWrapper<XYChart>(chart);
@@ -261,19 +261,19 @@ class SwingWorkerRealTime {
         double[] ydata1 = new double[1000];
         double[] ydata2 = new double[1000];
         double[] ydata3 = new double[1000];
+        ArrayList<String[]> ss;
+        ArrayList<String[]> st;
+        ArrayList<String[]> sg;
+        ArrayList<String[]> sp;
         Gson gson = new Gson();
         Type colloectionType = new TypeToken<ArrayList<String[]>>() {}.getType();
         @Override
         protected Boolean doInBackground(){
-            ArrayList<String[]> ss;
-            ArrayList<String[]> st;
-            ArrayList<String[]> sg;
-            ArrayList<String[]> sp;
-            String obj = null;
-            String swt = null;
-            String ngh = null;
-            String tdp = null;
             while(!isCancelled()) {
+                String obj = null;
+                String swt = null;
+                String ngh = null;
+                String tdp = null;
                 if (Monitor.data0 != null&&Monitor.data0.peek()!=null) {
                     obj = Monitor.data0.poll();
                     //System.out.println(obj);
@@ -417,7 +417,7 @@ class SwingWorkerRealTime {
             long start = System.currentTimeMillis();
             long duration = System.currentTimeMillis() - start;
             try {
-                Thread.sleep(30 - duration); // 40 ms ==> 25fps
+                Thread.sleep(10 - duration); // 40 ms ==> 25fps
             } catch (InterruptedException e) {
                 System.out.println("InterruptedException occurred.");
             }
